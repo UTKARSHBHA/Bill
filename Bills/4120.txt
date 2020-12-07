@@ -1,0 +1,20 @@
+	Welcome To IPEC Cafeteria
+
+ Bill Number : 4120
+ Customer Name : Utkarsh
+ Phone Number : 7053517018
+ ===================================
+ Products   |		QTY    |  	Price
+ ===================================
+ Bath Soap		 10	    400
+ Daal		 10	    600
+ Thumbs Up		 10	    450
+
+ ***********************************
+ Cosmetic Tax			  Rs. 20.0
+ Grocery Tax			  Rs. 60.0
+ Cold Drinks Tax			  Rs. 22.5
+ ***********************************
+ -----------------------------------
+ Total Bill			  Rs. 1552.5
+ -----------------------------------
