@@ -1,0 +1,22 @@
+        Welcome To IPEC Cafeteria
+            Ghaziabad,201010
+
+ Time: 11:12:50       Date: 10-12-2020
+ Bill Number : 1179
+ Customer Name : utkarsh
+ Phone Number : 1234567890
+ ======================================
+ Products   |		QTY    |  	Price
+ ======================================
+ Veg Sandwich		 1	    25
+ Ice Tea		 1	    25
+
+ **************************************
+ Service Tax			  Rs. 0.75
+ Packing Charges			  Rs. 0.0
+ Welfare Tax			  Rs. 1.0
+ **************************************
+ --------------------------------------
+ Total Bill			  Rs. 51.75
+ --------------------------------------
+    *ThankYou For Shopping With Us*

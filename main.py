@@ -1,6 +1,7 @@
 from tkinter import *
 import math,random,os
 from tkinter import messagebox
+import datetime
 
 class Bill_App:
 
@@ -8,8 +9,11 @@ class Bill_App:
         self.root = root
         self.root.geometry("1350x700+0+0")
         self.root.title("IPEC CAFETERIA")
-        bg_color = "#072763"
-        title = Label(self.root, text = "🍔 FAST FOOD CORNER 🍟" , bd = 12 , relief= GROOVE ,bg =  bg_color, fg = "white",font =("times new roman" , 30 , "bold"), pady = 2 ).pack(fill=X)
+        self.root.resizable(0,0)
+        self.root["bg"]="#9a204a"
+        bg_color = "#9a204a"
+        title = Label(self.root, text = "🍔 T2 FAST FOOD CORNER 🍟" , bd = 12 , relief= GROOVE ,bg =  bg_color, fg = "orange",font =("times new roman" , 30 , "bold"), pady = 2 ).pack(fill=X)
+
         #================variables==================
         #==============Snacks===================
         self.bread = IntVar()
@@ -55,22 +59,23 @@ class Bill_App:
 
         #===================Customer Detail Frame
         F1 = LabelFrame(self.root ,bd = 10 , relief = RIDGE, text = "Customer Details 🙂", font= ("times new roman", 15 , "bold"),fg = "gold", bg= bg_color)
-        F1.place(x = 0 , y = 80 , relwidth=1)
+        F1.place(x = 0 , y = 79 , relwidth=1,height=99)
 
-        cname_lbl = Label(F1 , text="Customer Name",bg = bg_color , fg = "white", font= ("times new roman",18,"bold")).grid(row = 0 , column = 0 , padx= 20 , pady = 5)
+        cname_lbl = Label(F1 , text="Customer Name",bg = bg_color , fg = "lightgreen", font= ("times new roman",18,"bold")).grid(row = 0 , column = 0 , padx= 20 , pady = 5)
         cname_txt = Entry(F1 , width = 15 ,textvariable= self.c_name, font= "arial 15", bd = 7 , relief = SUNKEN).grid(row = 0 , column = 1 , pady = 5 , padx = 10)
 
-        cphn_lbl = Label(F1, text="Phone No. 📞", bg=bg_color, fg="white", font=("times new roman", 18, "bold")).grid(row=0, column=2, padx=20, pady=5)
+        cphn_lbl = Label(F1, text="Phone No. 📞", bg=bg_color, fg="lightgreen", font=("times new roman", 18, "bold")).grid(row=0, column=2, padx=20, pady=5)
         cphn_txt = Entry(F1, width=15,textvariable= self.c_phone, font="arial 15", bd=7, relief=SUNKEN).grid(row=0, column=3, pady=5, padx=10)
 
-        c_bill_lbl = Label(F1, text="Bill Number", bg=bg_color, fg="white", font=("times new roman", 18, "bold")).grid(row=0, column=4, padx=20, pady=5)
+        c_bill_lbl = Label(F1, text="Bill Number", bg=bg_color, fg="lightgreen", font=("times new roman", 18, "bold")).grid(row=0, column=4, padx=20, pady=5)
         c_bill_txt = Entry(F1, width=15,textvariable= self.search_bill, font="arial 15", bd=7, relief=SUNKEN).grid(row=0, column=5, pady=5, padx=10)
 
-        bill_btn = Button(F1 , text = "Search",command=self.find_bill, width = 10 , bd = 7 , font = "arial 12 bold").grid(row = 0 , column = 6 ,padx = 10,pady = 10)
+        bill_btn = Button(F1 , text = "Search",command=self.find_bill,bg="orange",fg="black", width = 10 , bd = 6 , font = "arial 12 bold").grid(row = 0 , column = 6 ,padx = 10,pady = 10)
+
 
         #=================Snacks Frame ================
         F2 = LabelFrame(self.root , bd = 10 , relief = GROOVE, text = "Snacks 🍕", font= ("times new roman", 15 , "bold"),fg = "gold", bg= bg_color)
-        F2.place(x = 3 , y = 180 ,width=325 , height = 380)
+        F2.place(x = 2, y = 180 ,width=325 , height = 380)
 
         bread_lbl = Label(F2 , text="Bread Pakoda", font = ("times new roman" , 16 , "bold") , bg = bg_color , fg = "lightgreen" ).grid(row = 0 , column = 0 , padx = 10 , pady = 10 , sticky = "w")
         bread_tst= Entry(F2 , width=10, textvariable= self.bread, font = ("times new roman" , 16 , "bold"), bd = 5 , relief = SUNKEN).grid(row = 0 , column = 1 , padx = 10 , pady = 10)
@@ -92,7 +97,7 @@ class Bill_App:
 
         #=================Mini Meals Frame ================
         F3 = LabelFrame(self.root , bd = 10 , relief = GROOVE, text = "Mini Meals 🍜", font= ("times new roman", 15 , "bold"),fg = "gold", bg= bg_color)
-        F3.place(x = 335 , y = 180 ,width=325 , height = 380)
+        F3.place(x = 327 , y = 180 ,width=330 , height = 380)
 
         g1_lbl = Label(F3 , text="Chole Bhature", font = ("times new roman" , 16 , "bold") , bg = bg_color , fg = "lightgreen" ).grid(row = 0 , column = 0 , padx = 10 , pady = 10 , sticky = "w")
         g1_tst= Entry(F3 , width=10,textvariable= self.bhature, font = ("times new roman" , 16 , "bold"), bd = 5 , relief = SUNKEN).grid(row = 0 , column = 1 , padx = 10 , pady = 10)
@@ -115,7 +120,7 @@ class Bill_App:
         #=================Beverages Frame ================
 
         F4 = LabelFrame(self.root , bd = 10 , relief = GROOVE, text = "Beverages ☕", font= ("times new roman", 15 , "bold"),fg = "gold", bg= bg_color)
-        F4.place(x = 667 , y = 180 ,width=325 , height = 380)
+        F4.place(x = 657 , y = 180 ,width=325 , height = 380)
 
         c1_lbl = Label(F4 , text="Tea", font = ("times new roman" , 16 , "bold") , bg = bg_color , fg = "lightgreen" ).grid(row = 0 , column = 0 , padx = 10 , pady = 10 , sticky = "w")
         c1_tst= Entry(F4 , width=10,textvariable= self.tea, font = ("times new roman" , 16 , "bold"), bd = 5 , relief = SUNKEN).grid(row = 0 , column = 1 , padx = 10 , pady = 10)
@@ -137,8 +142,8 @@ class Bill_App:
 
         #========Bill Area========
         F5 = Frame(self.root, bd=10, relief=GROOVE)
-        F5.place(x=1010, y=180, width=330, height=380)
-        bill_title=Label(F5,text="Bill Area",font="arial 15 bold",bd=7,relief=GROOVE).pack(fill=X)
+        F5.place(x=990, y=180, width=360, height=380)
+        bill_title=Label(F5,text="Customer Bill",font="arial 15 bold",bd=7,bg="orange",relief=GROOVE).pack(fill=X)
         scrol_y=Scrollbar(F5,orient=VERTICAL)
         self.txtarea=Text(F5,yscrollcommand=scrol_y.set)
         scrol_y.pack(side=RIGHT,fill=Y)
@@ -148,34 +153,34 @@ class Bill_App:
         #========ButtonFrame========
         F6=LabelFrame(self.root , bd = 10 , relief = GROOVE, text = "Bill Menu 🛒", font= ("times new roman", 15 , "bold"),fg = "gold", bg= bg_color)
         F6.place(x = 0 , y = 560 ,relwidth=1 , height = 140)
-        m1_lbl=Label(F6,text="Total Snacks Price",bg=bg_color,fg="white",font=("times new roman",14,"bold")).grid(row=0,column=0,padx=20,pady=1,sticky="w")
+        m1_lbl=Label(F6,text="Total Snacks Price",bg=bg_color,fg="lightgreen",font=("times new roman",14,"bold")).grid(row=0,column=0,padx=20,pady=1,sticky="w")
         m1_txt=Entry(F6,width=18,textvariable= self.snacks_price,font="arial 10 bold",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=1)
 
-        m2_lbl = Label(F6, text="Total Meals Price", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=1, column=0, padx=20, pady=1, sticky="w")
+        m2_lbl = Label(F6, text="Total Meals Price", bg=bg_color, fg="lightgreen",font=("times new roman", 14, "bold")).grid(row=1, column=0, padx=20, pady=1, sticky="w")
         m2_txt = Entry(F6, width=18,textvariable= self.meals_price, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=1, column=1, padx=10, pady=1)
 
-        m3_lbl = Label(F6, text="Total Beverages Price", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=2, column=0, padx=20, pady=1, sticky="w")
+        m3_lbl = Label(F6, text="Total Beverages Price", bg=bg_color, fg="lightgreen",font=("times new roman", 14, "bold")).grid(row=2, column=0, padx=20, pady=1, sticky="w")
         m3_txt = Entry(F6, width=18,textvariable= self.beverages_price, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=1)
 
-        c1_lbl = Label(F6, text="Service Tax", bg=bg_color, fg="white",
+        c1_lbl = Label(F6, text="Service Tax", bg=bg_color, fg="lightgreen",
                        font=("times new roman", 14, "bold")).grid(row=0, column=2, padx=20, pady=1, sticky="w")
         c1_txt = Entry(F6, width=18,textvariable= self.service_tax, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=0, column=3, padx=10, pady=1)
 
-        c2_lbl = Label(F6, text="Packing Charges", bg=bg_color, fg="white",
+        c2_lbl = Label(F6, text="Packing Charges", bg=bg_color, fg="lightgreen",
                        font=("times new roman", 14, "bold")).grid(row=1, column=2, padx=20, pady=1, sticky="w")
         c2_txt = Entry(F6, width=18,textvariable= self.packing_tax, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=1, column=3, padx=10, pady=1)
 
-        c3_lbl = Label(F6, text="Welfare Tax", bg=bg_color, fg="white",
+        c3_lbl = Label(F6, text="Welfare Tax", bg=bg_color, fg="lightgreen",
                        font=("times new roman", 14, "bold")).grid(row=2, column=2, padx=20, pady=1, sticky="w")
         c3_txt = Entry(F6, width=18, textvariable= self.welfare_tax,font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=2, column=3, padx=10, pady=1)
 
-        btn_F=Frame(F6,bg="#072363")
+        btn_F=Frame(F6,bg="#9a204a")
         btn_F.place(x=750,width=580,height=105)
 
-        total_btn=Button(btn_F,command = self.total,text="Total",bg="cadetblue",fg="black",bd=2,pady=15,width=10,height=2,font="arial 15 bold").grid(row=0,column=0,padx=5,pady=5)
-        GBill_btn=Button(btn_F,text="Generate Bill",command=self.bill_area,bg="cadetblue",fg="black",bd=2,pady=15,width=12,height=2,font="arial 15 bold").grid(row=0,column=1,padx=5,pady=5)
-        Clear_btn=Button(btn_F,text="Clear",command=self.clear_data,bg="cadetblue",fg="black",bd=2,pady=15,width=10,height=2,font="arial 15 bold").grid(row=0,column=2,padx=5,pady=5)
-        Exit_btn=Button(btn_F,text="Exit",command=self.Exit_app,bg="cadetblue",fg="black",bd=2,pady=15,width=10,height=2,font="arial 15 bold").grid(row=0,column=3,padx=5,pady=5)
+        total_btn=Button(btn_F,command = self.total,text="Total",bg="orange",fg="black",bd=3,pady=15,width=10,height=2,font="arial 15 bold").grid(row=0,column=0,padx=5,pady=5)
+        GBill_btn=Button(btn_F,text="Generate Bill",command=self.bill_area,bg="orange",fg="black",bd=3,pady=15,width=12,height=2,font="arial 15 bold").grid(row=0,column=1,padx=5,pady=5)
+        Clear_btn=Button(btn_F,text="Clear",command=self.clear_data,bg="orange",fg="black",bd=3,pady=15,width=10,height=2,font="arial 15 bold").grid(row=0,column=2,padx=5,pady=5)
+        Exit_btn=Button(btn_F,text="Exit",command=self.Exit_app,bg="orange",fg="black",bd=3,pady=15,width=10,height=2,font="arial 15 bold").grid(row=0,column=3,padx=5,pady=5)
         self.welcome_bill()
     def total(self):
         self.c_s_p= self.bread.get()*15
@@ -214,7 +219,7 @@ class Bill_App:
                     self.g_t_p
         )
         self.meals_price.set("Rs. "+str(self.total_meals_price))
-        self.g_tax=round((self.total_meals_price * 0.04), 2)
+        self.g_tax=round((self.total_meals_price * 0.02), 2)
         self.packing_tax.set("Rs. " + str(self.g_tax))
 
         self.d_m_p=self.tea.get()  *10
@@ -233,7 +238,7 @@ class Bill_App:
              self.d_s_p
         )
         self.beverages_price.set("Rs. "+str(self.total_beverages_price))
-        self.d_tax=round((self.total_beverages_price * 0.02), 2)
+        self.d_tax=round((self.total_beverages_price * 0.04), 2)
         self.welfare_tax.set("Rs. " +str(self.d_tax))
 
         self.Total_bill=float(
@@ -244,17 +249,19 @@ class Bill_App:
                             self.g_tax+
                             self.d_tax
         )
+        self.final_cost = round((self.Total_bill), 2)
 
     def welcome_bill(self):
         self.txtarea.delete('1.0',END)
-        self.txtarea.insert(END, "      Welcome To IPEC Cafeteria\n")
-        self.txtarea.insert(END, "          Ghaziabad,201010\n")
+        self.txtarea.insert(END, "        Welcome To IPEC Cafeteria\n")
+        self.txtarea.insert(END, "            Ghaziabad,201010\n")
+        self.txtarea.insert(END, '\n Time: {:%H:%M:%S       Date: %d-%m-%Y}'.format(datetime.datetime.now()))
         self.txtarea.insert(END, f"\n Bill Number : {self.bill_no.get()}")
         self.txtarea.insert(END, f"\n Customer Name : {self.c_name.get()}")
         self.txtarea.insert(END, f"\n Phone Number : {self.c_phone.get()}")
-        self.txtarea.insert(END, f"\n ===================================")
+        self.txtarea.insert(END, f"\n ======================================")
         self.txtarea.insert(END, f"\n Products   |\t\tQTY    |  \tPrice")
-        self.txtarea.insert(END, f"\n ===================================")
+        self.txtarea.insert(END, f"\n ======================================")
 
     def bill_area(self):
         if self.c_name.get()=="" or self.c_phone.get()=="":
@@ -307,19 +314,19 @@ class Bill_App:
             if self.mineral.get() != 0:
                 self.txtarea.insert(END, f"\n Mineral Water\t\t {self.mineral.get()}\t    {self.d_s_p}")
 
-            self.txtarea.insert(END, f"\n\n ***********************************")
-            if self.service_tax.get()!="0.0":
+            self.txtarea.insert(END, f"\n\n **************************************")
+            if self.service_tax.get()!= "0.0":
                 self.txtarea.insert(END, f"\n Service Tax\t\t\t  {self.service_tax.get()}")
             if self.packing_tax.get()!= "0.0":
                 self.txtarea.insert(END, f"\n Packing Charges\t\t\t  {self.packing_tax.get()}")
             if self.welfare_tax.get()!= "0.0":
                 self.txtarea.insert(END, f"\n Welfare Tax\t\t\t  {self.welfare_tax.get()}")
 
-            self.txtarea.insert(END, f"\n ***********************************")
-            self.txtarea.insert(END, f"\n -----------------------------------")
-            self.txtarea.insert(END, f"\n Total Bill\t\t\t  Rs. {self.Total_bill}")
-            self.txtarea.insert(END, f"\n -----------------------------------")
-            self.txtarea.insert(END, f"\n  🙂ThankYou For Shopping With Us🙂")
+            self.txtarea.insert(END, f"\n **************************************")
+            self.txtarea.insert(END, f"\n --------------------------------------")
+            self.txtarea.insert(END, f"\n Total Bill\t\t\t  Rs. {self.final_cost}")
+            self.txtarea.insert(END, f"\n --------------------------------------")
+            self.txtarea.insert(END, f"\n    *ThankYou For Shopping With Us*")
             self.save_bill()
 
     def save_bill(self):
@@ -398,8 +405,8 @@ class Bill_App:
         if op>0:
             self.root.destroy()
 
+
 root = Tk()
 obj = Bill_App(root)
 root.mainloop()
-
 
